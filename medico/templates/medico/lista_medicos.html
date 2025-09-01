@@ -1,0 +1,35 @@
+{% extends 'medico/base.html' %}
+
+{% block content %}
+    <h2>Lista de Médicos</h2>
+    <table border="1" style="width: 100%; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th style="padding: 8px;">Nome Completo</th>
+                <th style="padding: 8px;">Email</th>
+                <th style="padding: 8px;">Especialidades</th>
+                <th style="padding: 8px;">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td style="padding: 8px;">Dr. João da Silva</td>
+                <td style="padding: 8px;">joao@email.com</td>
+                <td style="padding: 8px;">Cardiologia</td>
+                <td style="padding: 8px;">
+                    <a href="#">Editar</a>
+                    <a href="#">Deletar</a>
+                </td>
+            </tr>
+            <tr>
+                <td style="padding: 8px;">Dra. Maria Oliveira</td>
+                <td style="padding: 8px;">maria@email.com</td>
+                <td style="padding: 8px;">Dermatologia</td>
+                <td style="padding: 8px;">
+                    <a href="#">Editar</a>
+                    <a href="#">Deletar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+{% endblock %}
