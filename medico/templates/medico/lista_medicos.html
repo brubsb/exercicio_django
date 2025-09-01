@@ -1,8 +1,12 @@
 {% extends 'medico/base.html' %}
 
 {% block content %}
-    <h2>Lista de Médicos</h2>
-    <table border="1" style="width: 100%; border-collapse: collapse;">
+    <h2>Médicos Cadastrados</h2>
+    <a href="{% url 'cadastrar_medico' %}">Adicionar Novo Médico</a>
+      
+  
+
+    <table border="1" style="width:100%; border-collapse: collapse;">
         <thead>
             <tr>
                 <th style="padding: 8px;">Nome Completo</th>
@@ -12,24 +16,27 @@
             </tr>
         </thead>
         <tbody>
+            {% for medico in medicos %}
             <tr>
-                <td style="padding: 8px;">Dr. João da Silva</td>
-                <td style="padding: 8px;">joao@email.com</td>
-                <td style="padding: 8px;">Cardiologia</td>
+                <td style="padding: 8px;">{{ medico.nome }} {{ medico.sobrenome }}</td>
+                <td style="padding: 8px;">{{ medico.email }}</td>
                 <td style="padding: 8px;">
-                    <a href="#">Editar</a>
-                    <a href="#">Deletar</a>
+                    {% for esp in medico.nome_especialidade.all %}
+                        {{ esp.nome_especialidade }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                </td>
+                <td style="padding: 8px;">
+                   <!-- ... dentro do loop for ... -->
+                    <a href="{% url 'editar_medico' medico.id %}">Editar</a>
+                    <a href="{% url 'deletar_medico' medico.id %}">Deletar</a>
+
                 </td>
             </tr>
+            {% empty %}
             <tr>
-                <td style="padding: 8px;">Dra. Maria Oliveira</td>
-                <td style="padding: 8px;">maria@email.com</td>
-                <td style="padding: 8px;">Dermatologia</td>
-                <td style="padding: 8px;">
-                    <a href="#">Editar</a>
-                    <a href="#">Deletar</a>
-                </td>
+                <td colspan="4" style="text-align: center; padding: 8px;">Nenhum médico cadastrado.</td>
             </tr>
+            {% endfor %}
         </tbody>
     </table>
 {% endblock %}

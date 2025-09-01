@@ -1,0 +1,16 @@
+{% extends 'medico/base.html' %}
+
+{% block content %}
+    <h2>Editando Especialidade</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label for="nome_especialidade_input">Nome da Especialidade:</label>
+        <!-- O atributo 'value' preenche o campo com o nome atual da especialidade -->
+        <input type="text" id="nome_especialidade_input" name="nome_especialidade" value="{{ especialidade.nome_especialidade }}" required>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+      
+
+    <a href="{% url 'lista_especialidades' %}">Cancelar e voltar para a lista</a>
+{% endblock %}

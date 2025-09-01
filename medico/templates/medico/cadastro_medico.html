@@ -1,31 +1,36 @@
 {% extends 'medico/base.html' %}
 
 {% block content %}
-    <h2>Cadastro de Médico</h2>
-    <form>
-        <p>
-            <label>Nome:</label>  
+    <h2>Cadastrar Novo Médico</h2>
 
-            <input type="text" name="nome">
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="nome_input">Nome:</label>  
+
+            <input type="text" id="nome_input" name="nome" required>
         </p>
         <p>
-            <label>Sobrenome:</label>  
+            <label for="sobrenome_input">Sobrenome:</label>  
 
-            <input type="text" name="sobrenome">
+            <input type="text" id="sobrenome_input" name="sobrenome" required>
         </p>
         <p>
-            <label>Email:</label>  
+            <label for="email_input">Email:</label>  
 
-            <input type="email" name="email">
+            <input type="email" id="email_input" name="email" required>
         </p>
         <p>
-            <label>Especialidades:</label>  
+            <label for="especialidades_select">Especialidades (segure Ctrl/Cmd para selecionar várias):</label>  
 
-            <select multiple>
-                <option>Cardiologia</option>
-                <option>Dermatologia</option>
+            <select name="especialidades" id="especialidades_select" multiple required>
+                {% for especialidade in especialidades %}
+                    <option value="{{ especialidade.id }}">{{ especialidade.nome_especialidade }}</option>
+                {% empty %}
+                    <option disabled>Nenhuma especialidade cadastrada. Cadastre uma primeiro.</option>
+                {% endfor %}
             </select>
         </p>
-        <button type="submit">Salvar</button>
+        <button type="submit">Salvar Médico</button>
     </form>
 {% endblock %}

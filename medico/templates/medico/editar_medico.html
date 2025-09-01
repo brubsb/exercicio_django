@@ -1,0 +1,40 @@
+{% extends 'medico/base.html' %}
+
+{% block content %}
+    <h2>Editando Médico: {{ medico.nome }} {{ medico.sobrenome }}</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <p>
+            <label for="nome_input">Nome:</label>  
+
+            <input type="text" id="nome_input" name="nome" value="{{ medico.nome }}" required>
+        </p>
+        <p>
+            <label for="sobrenome_input">Sobrenome:</label>  
+
+            <input type="text" id="sobrenome_input" name="sobrenome" value="{{ medico.sobrenome }}" required>
+        </p>
+        <p>
+            <label for="email_input">Email:</label>  
+
+            <input type="email" id="email_input" name="email" value="{{ medico.email }}" required>
+        </p>
+        <p>
+            <label for="especialidades_select">Especialidades:</label>  
+
+            <select name="especialidades" id="especialidades_select" multiple required>
+                {% for especialidade in especialidades %}
+                    <option value="{{ especialidade.id }}" 
+                        {% if especialidade in medico.nome_especialidade.all %}selected{% endif %}>
+                        {{ especialidade.nome_especialidade }}
+                    </option>
+                {% endfor %}
+            </select>
+        </p>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+      
+
+    <a href="{% url 'lista_medicos' %}">Cancelar e voltar para a lista</a>
+{% endblock %}
