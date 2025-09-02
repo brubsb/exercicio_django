@@ -1,34 +1,33 @@
 {% extends 'medico/base.html' %}
+{% load static %}
 
 {% block content %}
     <h2>Especialidades Cadastradas</h2>
-    <a href="{% url 'cadastrar_especialidade' %}">Adicionar Nova Especialidade</a>
+    <a href="{% url 'cadastrar_especialidade' %}" class="btn">Adicionar Nova Especialidade</a>
       
-  
-
-    <table border="1" style="width:100%; border-collapse: collapse;">
-        <thead>
-            <tr>
-                <th style="padding: 8px;">Nome</th>
-                <th style="padding: 8px;">Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for especialidade in especialidades %}
-            <tr>
-                <td style="padding: 8px;">{{ especialidade.nome_especialidade }}</td>
-                <td style="padding: 8px;">
-                    <!-- ... dentro do loop for ... -->
-                    <a href="{% url 'editar_especialidade' especialidade.id %}">Editar</a>
-                    <a href="{% url 'deletar_especialidade' especialidade.id %}">Deletar</a>
-
-                </td>
-            </tr>
-            {% empty %}
-            <tr>
-                <td colspan="2" style="text-align: center; padding: 8px;">Nenhuma especialidade cadastrada.</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for especialidade in especialidades %}
+                <tr>
+                    <td data-label="Nome">{{ especialidade.nome_especialidade|capfirst }}</td>
+                    <td data-label="Ações" class="table-actions">
+                        <a href="{% url 'editar_especialidade' especialidade.id %}" class="action-edit">Editar</a>
+                        <a href="{% url 'deletar_especialidade' especialidade.id %}" class="action-delete">Deletar</a>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="2" class="no-data-row">Nenhuma especialidade cadastrada.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

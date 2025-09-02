@@ -1,0 +1,224 @@
+/* Estilos gerais */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8; /* Fundo cinza claro */
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+    color: #ffffff; /* Título em cinza escuro */
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+a {
+    color: #5a67d8; /* Azul suave para links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #434190;
+}
+
+/* Header e Navegação */
+header {
+    background-color: #4c51bf; /* Azul escuro no cabeçalho */
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 8px solid #3c418c;
+}
+
+nav {
+    background-color: #ffffff;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+nav a {
+    display: inline-block;
+    padding: 10px 15px;
+    font-weight: bold;
+    color: #2d3748;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+
+/* Formulários */
+form {
+    background-color: #f7fafc; /* Fundo do formulário cinza muito claro */
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #4a5568;
+}
+
+input[type="text"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #cbd5e0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 16px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 110, 234, 0.2);
+}
+
+/* Botões */
+button[type="submit"],
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #ffffff;
+    background-color: #5a67d8; /* Azul do botão principal */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+button[type="submit"]:hover,
+.btn:hover {
+    background-color: #434190; /* Roxo mais escuro ao passar o mouse */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    background-color: #e2e8f0;
+    color: #4a5568;
+    border: 1px solid #cbd5e0;
+}
+
+.btn-secondary:hover {
+    background-color: #cbd5e0;
+    color: #4a5568;
+}
+
+/* Tabelas */
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table thead {
+    background-color: #e6e6fa; /* Lavanda suave para o cabeçalho da tabela */
+    color: #2d3748;
+    border-bottom: 2px solid #e2e8f0; /* Adiciona uma borda mais forte para separar o cabeçalho */
+}
+
+table th,
+table td {
+    padding: 15px;
+    text-align: left;
+    /* Removido o border-bottom individual das células */
+}
+
+/* Adiciona um fundo listrado para separar visualmente as linhas */
+table tbody tr {
+    border-bottom: 1px solid #e2e8f0; /* Adiciona a borda à linha inteira */
+}
+
+table tbody tr:nth-child(even) {
+    background-color: #f7fafc; /* Fundo cinza muito claro para linhas pares */
+}
+
+table tbody tr:last-child {
+    border-bottom: none; /* Remove a borda da última linha */
+}
+
+table tbody tr:hover {
+    background-color: #e2e8f0; /* Fundo mais escuro ao passar o mouse */
+}
+
+.no-data-row {
+    text-align: center;
+    font-style: italic;
+    color: #718096;
+}
+
+.table-actions {
+    display: flex; /* Permite o uso de flexbox */
+    flex-direction: row; /* Alinha os itens na mesma linha */
+    align-items: center; /* Alinha os itens verticalmente no centro */
+    gap: 8px; /* Adiciona um pequeno espaço entre os botões */
+}
+
+.action-edit,
+.action-delete {
+    padding: 6px 10px; /* Reduz o preenchimento para tornar os botões menores */
+    border-radius: 6px;
+    font-weight: bold;
+    /* Removido o 'width: 100%' para que os botões não ocupem toda a largura */
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.action-edit {
+    background-color: #63b3ed; /* Azul claro para 'Editar' */
+    color: #ffffff;
+}
+
+.action-edit:hover {
+    background-color: #4299e1;
+}
+
+.action-delete {
+    background-color: #f56565; /* Vermelho suave para 'Deletar' */
+    color: #ffffff;
+}
+
+.action-delete:hover {
+    background-color: #e53e3e;
+}

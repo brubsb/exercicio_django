@@ -1,12 +1,15 @@
 {% extends 'medico/base.html' %}
+{% load static %}
 
 {% block content %}
     <h2>Cadastrar Nova Especialidade</h2>
     
     <form method="post" action="{% url 'cadastrar_especialidade' %}">
         {% csrf_token %}
-        <label for="nome_especialidade_input">Nome da Especialidade:</label>
-        <input type="text" id="nome_especialidade_input" name="nome_especialidade" required>
+        <div class="form-group">
+            <label for="nome_especialidade_input">Nome da Especialidade:</label>
+            <input type="text" id="nome_especialidade_input" name="nome_especialidade" required>
+        </div>
         <button type="submit">Salvar Especialidade</button>
     </form>
 {% endblock %}

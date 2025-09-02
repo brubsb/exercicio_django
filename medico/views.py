@@ -3,17 +3,17 @@ from django.shortcuts import render, redirect
 from .models import Medico, Especialidade
 
 def lista_especialidades(request):
-    """Busca e exibe todas as especialidades cadastradas."""
+    #Busca e exibe todas as especialidades cadastradas.
     contexto = {'especialidades': Especialidade.objects.all()}
     return render(request, 'medico/lista_especialidades.html', context=contexto)
 
 def lista_medicos(request):
-    """Busca e exibe todos os médicos cadastrados."""
+    #Busca e exibe todos os médicos cadastrados.
     contexto = {'medicos': Medico.objects.all()}
     return render(request, 'medico/lista_medicos.html', context=contexto)
 
 def cadastro_especialidade(request):
-    """Exibe o formulário (GET) e salva os dados (POST)."""
+    #Exibe o formulário (GET) e salva os dados (POST).
     if request.method == 'POST':
         nome_digitado = request.POST.get('nome_especialidade')
         if nome_digitado:
@@ -23,7 +23,7 @@ def cadastro_especialidade(request):
     return render(request, 'medico/cadastro_especialidade.html')
 
 def cadastro_medico(request):
-    """Exibe o formulário com as especialidades (GET) e salva os dados (POST)."""
+    #Exibe o formulário com as especialidades (GET) e salva os dados (POST).
     if request.method == 'POST':
         nome = request.POST.get('nome')
         sobrenome = request.POST.get('sobrenome')
@@ -39,7 +39,7 @@ def cadastro_medico(request):
     return render(request, 'medico/cadastro_medico.html', context=contexto)
 
 def deletar_especialidade(request, id_especialidade):
-    """Encontra uma especialidade pelo seu ID e a deleta."""
+    #Encontra uma especialidade pelo seu ID e a deleta.
     # Busca a especialidade específica que queremos deletar
     especialidade_para_deletar = Especialidade.objects.get(id=id_especialidade)
     # Deleta o objeto do banco de dados
@@ -48,7 +48,7 @@ def deletar_especialidade(request, id_especialidade):
     return redirect('lista_especialidades')
 
 def deletar_medico(request, id_medico):
-    """Encontra um médico pelo seu ID e o deleta."""
+    #Encontra um médico pelo seu ID e o deleta.
     # Busca o médico específico
     medico_para_deletar = Medico.objects.get(id=id_medico)
     # Deleta o objeto
@@ -57,9 +57,7 @@ def deletar_medico(request, id_medico):
     return redirect('lista_medicos')
 
 def editar_especialidade(request, id_especialidade):
-    """
-    Busca uma especialidade existente para edição (GET) e salva as alterações (POST).
-    """
+    #Busca uma especialidade existente para edição (GET) e salva as alterações (POST).
     # 1. Busca no banco a instância específica da especialidade que queremos editar.
     especialidade_para_editar = Especialidade.objects.get(id=id_especialidade)
 
@@ -79,9 +77,7 @@ def editar_especialidade(request, id_especialidade):
 
 
 def editar_medico(request, id_medico):
-    """
-    Busca um médico existente para edição (GET) e salva as alterações (POST).
-    """
+    #Busca um médico existente para edição (GET) e salva as alterações (POST).
     # 1. Busca a instância específica do médico.
     medico_para_editar = Medico.objects.get(id=id_medico)
 
