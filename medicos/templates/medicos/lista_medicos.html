@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Lista de Médicos{% endblock %}
+
+{% block content %}
+    <h2>Lista de Médicos</h2>
+    <ul>
+        {% for medicos in medico_list %}
+            <li>{{ medico.nome }} - {{ medicos.especialidade }}
+                {% if perms.medicos.change_medico %}
+                <form action="{% url 'medico_delete' medico.id %}" method="post" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Deletar</button>
+                </form>
+                <a href="{% url 'medico_edit' medicos.id %}">Editar</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    {% if perms.medicos.add_medico %}
+    <a href="{% url 'medico_create' %}">Cadastrar Novo Médico</a>
+    {% endif %}
+{% endblock %}

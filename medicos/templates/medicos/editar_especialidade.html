@@ -1,0 +1,17 @@
+{% extends 'medicos/base.html' %}
+{% load static %}
+
+{% block content %}
+    <h2>Editando Especialidade</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="nome_especialidade_input">Nome da Especialidade:</label>
+            <input type="text" id="nome_especialidade_input" name="nome_especialidade" value="{{ especialidade.nome_especialidade }}" required>
+        </div>
+        <button type="submit">Salvar Alterações</button>
+    </form>
+      
+    <a href="{% url 'lista_especialidades' %}" class="btn btn-secondary" style="margin-top: 15px;">Cancelar</a>
+{% endblock %}

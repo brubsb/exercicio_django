@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Meu Site{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Meu Site</h1>
+        {% if user.is_authenticated %}
+            <p>Olá, {{ user.username }}!</p>
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <!-- #csrf_token is very important to have as this is POST request -->
+                <button type="submit">Logout</button>
+            </form>
+        {% else %}
+            <a href="{% url 'login' %}" class="button">LOGIN</a>
+        {% endif %}
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}" class="button">Home</a></li>
+                <li><a href="{% url 'especialidade_list' %}">Especialidades</a></li>
+                <li><a href="{% url 'medico_list' %}">Médicos</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <p>&copy; 2024 Meu Site</p>
+    </footer>
+    <script src="{% static 'js/scripts.js' %}"></script>
+</body>
+</html>
